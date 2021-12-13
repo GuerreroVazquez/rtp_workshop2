@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build new docker image
-        run: docker build --no-cache . -t guerrerovazquez/test:dev
+        run: docker build --no-cache . -t katthyren/test:dev
 
       - name: Push Docker image to DockerHub (dev)
         run: |
