@@ -8,7 +8,7 @@ process FASTQC{
     publishDir "./fastqc", mode: 'copy'
     echo true
     input:
-    tuple val(base), file(reads) from ch_reads
+    tuple val(base), file(gato) from ch_reads
 
     output:
     tuple val(base), file("*.{html,zip}") into ch_multiqc
@@ -16,7 +16,29 @@ process FASTQC{
     script:
     """
     pwd
-    fastqc -q $reads
+    fastqc -q $gato
     """
+}
+
+
+process MULTIQC{
+
+    publishDir "./fastqc", mode: 'copy'
+    echo true
+    input:
+    file(htmls) from ch_multiqc.collect()
+    output:
+    file("*html") into ch_out
+    
+
+
+script:
+    """
+    pwd
+    fastqc -q $gato
+    
+    
+    """
+
 }
 
