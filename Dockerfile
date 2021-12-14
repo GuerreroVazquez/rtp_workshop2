@@ -1,6 +1,6 @@
 FROM nfcore/base:1.14
-LABEL authors="Barry Digby workshop" \
-      description="Docker container containing fastqc"
+LABEL authors="Barry Digby" \
+    description="Docker container containing fastqc"
 
 WORKDIR ./
 COPY environment.yml ./
