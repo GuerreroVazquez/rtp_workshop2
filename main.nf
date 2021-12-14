@@ -23,7 +23,7 @@ process FASTQC{
 
 process MULTIQC{
 
-    publishDir "./fastqc", mode: 'copy'
+    publishDir "./multiqc", mode: 'copy'
     echo true
     input:
     file(htmls) from ch_multiqc.collect()
@@ -32,10 +32,9 @@ process MULTIQC{
     
 
 
-script:
+    script:
     """
-    pwd
-    fastqc -q $gato
+    multiqc .
     
     
     """
